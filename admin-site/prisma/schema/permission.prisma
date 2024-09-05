@@ -1,0 +1,5 @@
+model Admin {
+    id     String      @id @default(cuid())
+    user   UserAccount @relation(fields: [userId], references: [id])
+    userId String
+}
