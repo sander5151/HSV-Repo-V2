@@ -1,0 +1,33 @@
+model Event {
+    id          String        @id @default(cuid())
+    title       String
+    description String?
+    location    String?
+    image       String?
+    startDate   DateTime
+    endDate     DateTime
+    price       Float?        @default(0)
+    EventTicket EventTicket[] @relation("EventTickets")
+}
+
+model EventTicket {
+    id          String      @id @default(cuid())
+    userId      String
+    user        UserAccount @relation("UserTickets", fields: [userId], references: [id])
+    event       Event       @relation("EventTickets", fields: [eventId], references: [id])
+    eventId     String
+    purchasedAt DateTime    @default(now()) // Tijdstip van aankoop
+    paid        Boolean     @default(false) // Betaalstatus
+}
+
+model UserAppointment {
+    id          String        @id @default(cuid())
+    title       String
+    description String?
+    location    String?
+    startDate   DateTime
+    endDate     DateTime
+    createdBy   UserAccount   @relation("AppointmentCreatedBy", fields: [createdById], references: [id])
+    createdById String
+    invitees    UserAccount[] @relation("AppointmentInvitees")
+}

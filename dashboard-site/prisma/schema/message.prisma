@@ -1,0 +1,27 @@
+model Message {
+    id         String      @id @default(cuid())
+    subject    String
+    body       String
+    isOpened   Boolean     @default(false)
+    sentAt     DateTime    @default(now())
+    senderId   String
+    sender     UserAccount @relation("SentMessages", fields: [senderId], references: [id])
+    threadId   String?
+    thread     Thread?     @relation(fields: [threadId], references: [id])
+    recipients Recipient[]
+}
+
+model Recipient {
+    id        String      @id @default(cuid())
+    messageId String
+    message   Message     @relation(fields: [messageId], references: [id])
+    userId    String
+    user      UserAccount @relation(fields: [userId], references: [id])
+    readAt    DateTime?
+}
+
+model Thread {
+    id       String    @id @default(cuid())
+    subject  String
+    messages Message[]
+}

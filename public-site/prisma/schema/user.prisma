@@ -1,0 +1,50 @@
+model UserAccount {
+    id                       String            @id @default(cuid())
+    clerkId                  String            @unique
+    firstName                String
+    lastName                 String
+    email                    String
+    image                    String?
+    gender                   String?
+    bio                      String?
+    phone                    String?
+    country                  String?
+    province                 String?
+    city                     String?
+    streetName               String?
+    houseNumber              String?
+    postalCode               String?
+    study                    String?
+    typeOfMembership         typeOfMembership  @default(Lid)
+    EventTicket              EventTicket[]     @relation("UserTickets")
+    UserAppointmentCreatedBy UserAppointment[] @relation("AppointmentCreatedBy")
+    UserAppointmentInivtees  UserAppointment[] @relation("AppointmentInvitees")
+    BankAccount              UserBankAccount?
+    UserPreference           UserPreference?
+
+    Message Message[] @relation("SentMessages")
+
+    Recipient Recipient[]
+
+    CommitteeMembership CommitteeMembership[]
+}
+
+enum typeOfMembership {
+    Lid
+    Donateur
+    Erelid
+}
+
+model UserBankAccount {
+    id     String      @id @default(cuid())
+    userId String      @unique
+    user   UserAccount @relation(fields: [userId], references: [id])
+    iban   String
+    bic    String
+}
+
+model UserPreference {
+    id     String      @id @default(cuid())
+    userId String      @unique
+    user   UserAccount @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

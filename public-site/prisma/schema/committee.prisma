@@ -1,0 +1,57 @@
+model Committee {
+    id          String   @id @default(cuid())
+    name        String
+    description String
+    isActive    Boolean  @default(true)
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    CommitteeMembership      CommitteeMembership[]
+    CommitteeCompetition     CommitteeCompetition[]
+    CommitteeChallengePoints CommitteeChallengePoints[]
+}
+
+model CommitteeMembership {
+    id          String      @id @default(cuid())
+    committee   Committee   @relation(fields: [committeeId], references: [id])
+    committeeId String
+    user        UserAccount @relation(fields: [userId], references: [id])
+    userId      String
+}
+
+model CommitteeCompetition {
+    id          String                     @id @default(cuid())
+    committee   Committee                  @relation(fields: [committeeId], references: [id])
+    committeeId String
+    totalPoints Int
+    challenges  CommitteeChallengePoints[] // Verwijzing naar de individuele uitdagingen en punten
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model CommitteeChallengePoints {
+    id          String                        @id @default(cuid())
+    challenge   CommitteeCompetitionChallenge @relation(fields: [challengeId], references: [id])
+    challengeId String
+    committee   Committee                     @relation(fields: [committeeId], references: [id])
+    committeeId String
+    points      Int                           @default(0) // Punten verdiend met deze specifieke uitdaging
+    maxPoints   Int // Maximaal aantal punten dat dit team kan verdienen voor deze uitdaging
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    CommitteeCompetition CommitteeCompetition[]
+}
+
+model CommitteeCompetitionChallenge {
+    id                       String                     @id @default(cuid())
+    title                    String
+    description              String
+    defaultMaxPoints         Int // Standaard maximaal aantal punten voor deze uitdaging
+    CommitteeChallengePoints CommitteeChallengePoints[] // Verwijzing naar de commissies die deze uitdaging hebben voltooid
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}

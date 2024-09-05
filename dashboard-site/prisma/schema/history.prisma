@@ -1,0 +1,31 @@
+model Board {
+    id          String        @id @default(cuid())
+    jaartal     String
+    image       String
+    boardMember BoardMember[]
+}
+
+model Faction {
+    id         String          @id @default(cuid())
+    jaartal    String
+    image      String
+    factionLid FactionMember[]
+}
+
+model BoardMember {
+    id        String @id @default(cuid())
+    firstName String
+    lastName  String
+    function  String
+    board     Board  @relation(fields: [boardId], references: [id])
+    boardId   String
+}
+
+model FactionMember {
+    id        String  @id @default(cuid())
+    firstName String
+    lastName  String
+    function  String
+    faction   Faction @relation(fields: [factionId], references: [id])
+    factionId String
+}
