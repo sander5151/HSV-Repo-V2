@@ -13,18 +13,6 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
     const [clientSecret, setClientSecret] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const updatePaymentCompleted = api.user.setpaymentCompleted.useMutation(
-        {
-            onSuccess: () => {
-                console.log('payment completed')
-            },
-            onError: (error) => {
-                console.error(error)
-                setErrorMessage('Failed to update payment completed')
-            }
-        }
-    )
-
     useEffect(() => {
         fetch("/api/stripe/create-payment-intent", {
             method: "POST",
@@ -66,7 +54,7 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
             elements,
             clientSecret,
             confirmParams: {
-                return_url: 'http://localhost:3000/word-lid/voltooid',
+                return_url: 'http://public.sandervddussen.nl/word-lid/voltooid',
             },
         });
         if (error) {

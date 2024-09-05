@@ -5,7 +5,7 @@ export default async function Page() {
     const user = await currentUser()
 
     if (!user) {
-        redirect("/word-lid")
+        redirect("/word-lid/aanmelden")
     }
 
     return (

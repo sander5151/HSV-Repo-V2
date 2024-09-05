@@ -41,7 +41,7 @@ export default function CreateUserForm({
             setHouseNumber("");
             setPostalCode("");
             setStudy("");
-            window.location.href = `/word-lid/profiel/betalen?bedrag=${Bedrag}`;
+            window.location.href = `/word-lid/betalen?bedrag=${Bedrag}`;
         }
     });
 
@@ -65,7 +65,8 @@ export default function CreateUserForm({
                     streetName,
                     houseNumber,
                     postalCode,
-                    study
+                    study,
+                    profileCompleted: true,
                 });
             }}>
                 <div className="w-full flex flex-col gap-2 p-8">

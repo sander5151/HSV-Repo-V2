@@ -15,6 +15,7 @@ model UserAccount {
     houseNumber              String?
     postalCode               String?
     study                    String?
+    profileCompleted         Boolean           @default(false)
     typeOfMembership         typeOfMembership  @default(Lid)
     EventTicket              EventTicket[]     @relation("UserTickets")
     UserAppointmentCreatedBy UserAppointment[] @relation("AppointmentCreatedBy")

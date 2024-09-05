@@ -11,7 +11,9 @@ function BetalenPageFallback() {
 export default async function WordLidPublic() {
     const user = await currentUser()
     const profileComplete = await api.user.checkIfProfileComplete({ clerkId: user?.id ?? '' })
-
+    if (!profileComplete) {
+        redirect("/word-lid/profiel")
+    }
 
     return (
         <main className='w-full h-full'>

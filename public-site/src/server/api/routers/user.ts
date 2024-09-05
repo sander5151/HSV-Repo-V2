@@ -54,17 +54,4 @@ export const userRouter = createTRPCRouter({
             });
 
         }),
-    setpaymentCompleted: publicProcedure
-        .input(z.object({ clerkId: z.string() }))
-        .mutation(({ ctx, input }) => {
-            return ctx.db.userAccount.update({
-                where: {
-                    clerkId: input.clerkId
-                },
-                data: {
-                    paymentCompleted: true
-                },
-
-            })
-        })
 });
