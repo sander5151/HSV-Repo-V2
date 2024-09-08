@@ -16,6 +16,15 @@ export const siteRouter = createTRPCRouter({
                     order: 'asc'
                 }
             })
+        }),
+    getSiteText: publicProcedure
+        .input(z.object({ id: z.string() }))
+        .query(({ ctx, input }) => {
+            return ctx.db.siteText.findUnique({
+                where: {
+                    id: input.id
+                }
+            })
         })
 
 });

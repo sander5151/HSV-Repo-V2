@@ -18,3 +18,9 @@ model SubMenuLink {
     menuLink   MenuLink @relation(fields: [menuLinkId], references: [id])
     menuLinkId String // Foreign key naar MenuLink
 }
+
+model SiteText {
+    id         String @id @default(cuid())
+    destinaton String
+    content    String
+}
