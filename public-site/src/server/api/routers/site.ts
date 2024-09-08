@@ -20,7 +20,7 @@ export const siteRouter = createTRPCRouter({
     getSiteText: publicProcedure
         .input(z.object({ id: z.string() }))
         .query(({ ctx, input }) => {
-            return ctx.db.siteText.findUnique({
+            return ctx.db.siteText.findFirst({
                 where: {
                     id: input.id
                 }

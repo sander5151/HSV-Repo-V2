@@ -2,10 +2,11 @@
 import { api } from "@/trpc/react"
 
 export default function OverPage() {
-    const data = api.site.getSiteText.useQuery({ id: 'cm0t1h62c0000nbg7lb4kkbrc' });
+    const { data: SiteText, isLoading, isError } = api.site.getSiteText.useQuery({ id: 'cm0tptt0h0000c18j6sqlny94' });
+    console.log(SiteText)
     return (
-        <div>
-            <p>{data.data?.content}</p>
+        <div className="w-full h-full flex p-4 bg-red-400">
+            <p className="text-4">{SiteText?.content}</p>
         </div>
     )
 }

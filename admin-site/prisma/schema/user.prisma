@@ -28,6 +28,8 @@ model UserAccount {
     CommitteeMembership      CommitteeMembership[]
     Admin                    Admin[]
     Todo                     Todo[]
+
+    SiteText SiteText[]
 }
 
 enum typeOfMembership {
