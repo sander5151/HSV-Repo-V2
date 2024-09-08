@@ -31,3 +31,15 @@ model UserAppointment {
     createdById String
     invitees    UserAccount[] @relation("AppointmentInvitees")
 }
+
+model Todo {
+    id          String      @id @default(cuid())
+    userId      String
+    user        UserAccount @relation(fields: [userId], references: [id])
+    subject     String
+    description String?
+    deadline    DateTime?
+    completed   Boolean     @default(false)
+    createdAt   DateTime    @default(now())
+    updatedAt   DateTime    @updatedAt
+}

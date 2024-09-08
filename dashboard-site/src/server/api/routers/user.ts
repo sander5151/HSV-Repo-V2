@@ -12,4 +12,13 @@ export const userRouter = createTRPCRouter({
                 }
             });
         }),
+    getUserInfoById: publicProcedure
+        .input(z.object({ id: z.string() }))
+        .query(({ ctx, input }) => {
+            return ctx.db.userAccount.findFirst({
+                where: {
+                    id: input.id
+                }
+            });
+        })
 });

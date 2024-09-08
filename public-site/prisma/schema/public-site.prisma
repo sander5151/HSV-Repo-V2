@@ -1,0 +1,20 @@
+model MenuLink {
+    id       String        @id @default(cuid())
+    name     String
+    href     String
+    enabled  Boolean       @default(false)
+    order    Int           @unique
+    sublinks SubMenuLink[] // Eén-op-veel relatie met SubMenuLinks
+}
+
+model SubMenuLink {
+    id         String   @id @default(cuid())
+    name       String
+    href       String
+    desc       String
+    icon       String // Opslag van de icon-naam als string
+    enabled    Boolean  @default(false)
+    order      Int      @unique
+    menuLink   MenuLink @relation(fields: [menuLinkId], references: [id])
+    menuLinkId String // Foreign key naar MenuLink
+}

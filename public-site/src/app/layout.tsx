@@ -1,14 +1,14 @@
 import "@/styles/globals.css";
 import { Noto_Sans } from 'next/font/google';
 import { type Metadata } from "next";
-
-import { TRPCReactProvider } from "@/trpc/react";
 import { ClerkProvider } from "@clerk/nextjs";
+import { TRPCReactProvider } from "@/trpc/react";
+import { auth } from "@clerk/nextjs/server";
 
 const noto_sans = Noto_Sans({
   subsets: ["latin", "latin-ext"],
   display: "swap",
-})
+});
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -19,11 +19,14 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+
   return (
     <ClerkProvider>
       <html lang="en" className={`${noto_sans.className}`}>
         <body className="w-screen h-screen flex flex-col">
           <TRPCReactProvider>
+            {/* Geef isLoggedIn door aan de client-side Navbar */}
+
             {children}
           </TRPCReactProvider>
         </body>

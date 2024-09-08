@@ -1,6 +1,6 @@
 model UserAccount {
-    id                       String            @id @default(cuid())
-    clerkId                  String            @unique
+    id                       String                @id @default(cuid())
+    clerkId                  String                @unique
     firstName                String
     lastName                 String
     email                    String
@@ -15,21 +15,19 @@ model UserAccount {
     houseNumber              String?
     postalCode               String?
     study                    String?
-    profileCompleted         Boolean           @default(false)
-    typeOfMembership         typeOfMembership  @default(Lid)
-    EventTicket              EventTicket[]     @relation("UserTickets")
-    UserAppointmentCreatedBy UserAppointment[] @relation("AppointmentCreatedBy")
-    UserAppointmentInivtees  UserAppointment[] @relation("AppointmentInvitees")
+    profileCompleted         Boolean               @default(false)
+    typeOfMembership         typeOfMembership      @default(Lid)
+    bedrag                   Float?                @default(5)
+    EventTicket              EventTicket[]         @relation("UserTickets")
+    UserAppointmentCreatedBy UserAppointment[]     @relation("AppointmentCreatedBy")
+    UserAppointmentInivtees  UserAppointment[]     @relation("AppointmentInvitees")
     BankAccount              UserBankAccount?
     UserPreference           UserPreference?
-
-    Message Message[] @relation("SentMessages")
-
-    Recipient Recipient[]
-
-    CommitteeMembership CommitteeMembership[]
-
-    Admin Admin[]
+    Message                  Message[]             @relation("SentMessages")
+    Recipient                Recipient[]
+    CommitteeMembership      CommitteeMembership[]
+    Admin                    Admin[]
+    Todo                     Todo[]
 }
 
 enum typeOfMembership {
@@ -44,10 +42,4 @@ model UserBankAccount {
     user   UserAccount @relation(fields: [userId], references: [id])
     iban   String
     bic    String
-}
-
-model UserPreference {
-    id     String      @id @default(cuid())
-    userId String      @unique
-    user   UserAccount @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

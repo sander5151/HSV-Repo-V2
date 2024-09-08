@@ -1,7 +1,7 @@
 import { postRouter } from "@/server/api/routers/post";
 import { createCallerFactory, createTRPCRouter } from "@/server/api/trpc";
 import { userRouter } from "./routers/user";
-import { eventRouter } from "./routers/event";
+import { calendarRouter } from "./routers/calendar";
 import { inboxRouter } from "./routers/inbox";
 
 /**
@@ -12,7 +12,7 @@ import { inboxRouter } from "./routers/inbox";
 export const appRouter = createTRPCRouter({
   post: postRouter,
   user: userRouter,
-  event: eventRouter,
+  calendar: calendarRouter,
   inbox: inboxRouter,
 });
 
