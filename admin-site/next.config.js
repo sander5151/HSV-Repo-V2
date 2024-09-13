@@ -11,8 +11,11 @@ const config = {
             {
                 protocol: "https",
                 hostname: "chibisafe.sandervddussen.nl",
-                port: '',
 
+            },
+            {
+                protocol: "https",
+                hostname: "img.clerk.com",
             }
         ]
     }

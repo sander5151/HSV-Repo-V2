@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { BadgeEuro, BotMessageSquare, Calendar, Group, House, PanelsTopLeft, Users } from "lucide-react"
+import { BadgeEuro, BotMessageSquare, Calendar, Group, House, PanelsTopLeft, Users, Images } from "lucide-react"
 import {
     Tabs,
     TabsContent,
@@ -21,12 +21,13 @@ export default function Sidebar() {
                         </div>
                         <div className="flex h-full flex-col w-full items-center justify-center gap-8">
                             <Link href="/" ><House /></Link>
-                            <Link href="/" ><Users /></Link>
-                            <Link href="/" ><Calendar /></Link>
-                            <Link href="/" ><BadgeEuro /></Link>
-                            <Link href="/" ><BotMessageSquare /></Link>
-                            <Link href="/" ><Group /></Link>
+                            <Link href="/leden" ><Users /></Link>
+                            <Link href="/evenementen" ><Calendar /></Link>
+                            <Link href="/financien" ><BadgeEuro /></Link>
+                            <Link href="/communicatie" ><BotMessageSquare /></Link>
+                            <Link href="/commissies" ><Group /></Link>
                             <Link href="/website" ><PanelsTopLeft /></Link>
+                            <Link href="/media" ><Images /></Link>
                         </div>
                     </div>
                 </div>

@@ -16,7 +16,7 @@ export default function Albums() {
     useEffect(() => {
         const fetchAlbums = async () => {
             try {
-                const res = await fetch('/api/albums'); // Roep de Next.js API aan
+                const res = await fetch('/api/images/album'); // Roep de Next.js API aan
                 if (!res.ok) {
                     throw new Error('Error fetching albums');
                 }
