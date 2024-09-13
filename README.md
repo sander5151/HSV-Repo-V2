@@ -1,5 +1,7 @@
 # HSV-Website Project
 
+test
+
 Als vereniging willen we natuurlijk dat onze online aanwezigheid helemaal up-to-date is en past bij wat onze leden nodig hebben. Momenteel gebruiken we Congressus voor onze website, maar eerlijk gezegd beginnen de kosten een beetje uit de hand te lopen. Dat brengt ons bij dit project: we gaan kijken naar de mogelijkheden om onze huidige website te vervangen door een eigen, op maat gemaakte oplossing.
 
 Het idee is om iets te bouwen dat beter aansluit bij wie we zijn en wat we willen doen, zonder dat het ons financieel de kop kost. In dit document zetten we de eerste stappen in de richting van een nieuwe website-opzet. We richten ons op drie belangrijke onderdelen: de publieke site ([www.hanzestudentenbelangen.nl](https://www.hanzestudentenbelangen.nl)), een dashboard voor onze leden ([dashboard.hanzestudentenbelangen.nl](https://dashboard.hanzestudentenbelangen.nl)) en een beheerdersportaal ([admin.hanzestudentenbelangen.nl](https://admin.hanzestudentenbelangen.nl)) waar we alle administratie kunnen regelen.
